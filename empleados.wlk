@@ -1,44 +1,52 @@
 //Escribir aqui los objetos
-
 object galvan {
-
     var sueldo = 15000
-    
+    var montoCobrado = 0
 
-    method sueldo(){
+    method sueldoActual() {
         return sueldo
     }
-    
-    method nuevoSueldo (_nuevoSueldo) {
+    method montoCobrado(_sueldo) {
+        montoCobrado = _sueldo
+    }
+    method nuevoSueldo(_nuevoSueldo) {
         sueldo = _nuevoSueldo
     }
-
 }
+
 object baigorria {
-
-   // var sueldo = 0
-    var cantEmpaVendidas = 0
+    var cantEmpanadasVendidas = 0
+    const valorDeEmpanada = 15
+    var  montoCobrado = 0
+    var totalCobrado = 0
     
-    method sueldo() {
-        return cantEmpaVendidas * 15
+    method sueldoActual() {
+        return cantEmpanadasVendidas * valorDeEmpanada    
     }
 
-    method venderEmpanada() {
-        cantEmpaVendidas = 1
+    method montoCobrado(_sueldoActual) {
+        montoCobrado = _sueldoActual
+        totalCobrado = totalCobrado + _sueldoActual
+        cantEmpanadasVendidas = 0 
     }
 
-    method vender(_cantEmpanadasVendidas) {
-        cantEmpaVendidas = cantEmpaVendidas + _cantEmpanadasVendidas
+    method cantEmpanadasVendidas(_cantEmpanadasVendidas) {
+        cantEmpanadasVendidas = cantEmpanadasVendidas + _cantEmpanadasVendidas
+    }  
+
+    method totalCobrado() {
+        return  totalCobrado 
     }
-    
 }
-
 object gimenez {
-    var fondos = 300000
-
-    method pagar(empleado) {
-        fondos = fondos - empleado.sueldo()
+    var fondoActual = 300000   
+    
+    method pagarSueldo(empleado) {
+        fondoActual = fondoActual - empleado.sueldoActual()
+        empleado.montoCobrado(empleado.sueldoActual())
     }
 
-
+    method fondoActual() {
+        return fondoActual
+    }
 }
